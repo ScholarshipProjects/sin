@@ -3,11 +3,11 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>List</ion-title>
+    <ion-title>Events</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<!--<ion-content>
   <ion-list>
     <button ion-item *ngFor="let item of items" (click)="itemTapped($event, item)">
       <ion-icon [name]="item.icon" item-left></ion-icon>
@@ -20,4 +20,19 @@
   <div *ngIf="selectedItem" padding>
     You navigated here from <b>{{selectedItem.title}}</b>
   </div>
+</ion-content>-->
+<ion-content>
+  <ion-list>
+
+    <ion-item>
+      <ion-thumbnail item-left>
+        <img src="assets/img/thumbnail-totoro.png">
+      </ion-thumbnail>
+      <h2>My Neighbor Totoro</h2>
+      <p>Hayao Miyazaki • 1988</p>
+      <button ion-button clear item-right>View</button>
+    </ion-item>
+
+  
+  </ion-list>
 </ion-content>

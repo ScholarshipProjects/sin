@@ -1,3 +1,20 @@
 page-home {
+    $opacity: 0.8;
+
+    ion-header{
+        opacity: $opacity;
+    }
+    ion-content{
+        color:white !important;
+        background-image: url('../assets/background_space.jpg');
+        background-size: 300%;
+        .login_form{
+            margin-left: auto;
+            margin-right: auto;
+            width: 75vw;
+            opacity: $opacity;
+            background-color: white;
+        }
+    }
 
 }

@@ -1,0 +1,149 @@
+<ion-header>
+    <ion-navbar>
+        <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+        <ion-title>Settings</ion-title>
+    </ion-navbar>
+
+    <ion-toolbar no-border-top>
+        <ion-segment [(ngModel)]="settings">
+            <ion-segment-button value="connection">
+                Connection
+            </ion-segment-button>
+            <ion-segment-button value="errors">
+                Errors
+            </ion-segment-button>
+            <ion-segment-button value="proxy">
+                Proxy
+            </ion-segment-button>
+        </ion-segment>
+    </ion-toolbar>
+</ion-header>
+<ion-content>
+    <div [ngSwitch]="settings">
+        <ion-list *ngSwitchCase="'connection'">
+            <ion-list-header>
+                Connection Status
+            </ion-list-header>
+
+            <ion-item>
+                <ion-toggle [(ngModel)]="status"></ion-toggle>
+                <ion-label>
+                    Enabled
+                </ion-label>
+                <ion-icon name='globe' item-left></ion-icon>
+            </ion-item>
+            <ion-list-header>
+                Server
+            </ion-list-header>
+            <ion-item>
+                <ion-label fixed>Address</ion-label>
+                <ion-input type="text" value="192.168.1.131" [disabled]="!status"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>Port</ion-label>
+                <ion-input type="text" value="8080" [disabled]="!status"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label fixed>Token</ion-label>
+                <ion-input type="text" value="sv_3244518qn" [disabled]="!status"></ion-input>
+            </ion-item>
+            <ion-list-header>
+                Other
+            </ion-list-header>
+            <ion-item>
+                <ion-label>Timeout</ion-label>
+                <ion-select [(ngModel)]="timeout" [disabled]="!status">
+                    <ion-option value="10s">10s</ion-option>
+                    <ion-option value="30s">30s</ion-option>
+                    <ion-option value="1m">1m</ion-option>
+                    <ion-option value="10m">10m</ion-option>
+                    <ion-option value="30m">30m</ion-option>
+                    <ion-option value="1h">1h</ion-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <button ion-button full large color="default" [disabled]="!status">Connect</button>
+
+            </ion-item>
+        </ion-list>
+        <!--Errors tab -->
+        <ion-list *ngSwitchCase="'errors'">
+            <ion-list-header>
+                Warning
+            </ion-list-header>
+            <ion-item>
+                <ion-toggle [(ngModel)]="status.warning"></ion-toggle>
+                <ion-label>
+                    Warning
+                </ion-label>
+                <ion-icon name='ios-warning' item-left></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-range [(ngModel)]="brightness">
+                    <ion-icon range-left small name="md-arrow-dropleft-circle"></ion-icon>
+                    <ion-icon range-right name="md-arrow-dropright-circle"></ion-icon>
+                </ion-range>
+            </ion-item>
+            <ion-list-header>
+                Critical
+            </ion-list-header>
+            <ion-item>
+                <ion-toggle [(ngModel)]="status.critical"></ion-toggle>
+                <ion-label>
+                    Critical
+                </ion-label>
+                <ion-icon name='ios-thermometer-outline' item-left></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-range [(ngModel)]="brightness">
+                    <ion-icon range-left small name="md-arrow-dropleft-circle"></ion-icon>
+                    <ion-icon range-right name="md-arrow-dropright-circle"></ion-icon>
+                </ion-range>
+            </ion-item>
+            <ion-list-header>
+                Down
+            </ion-list-header>
+            <ion-item>
+                <ion-toggle [(ngModel)]="status.down"></ion-toggle>
+                <ion-label>
+                    Down
+                </ion-label>
+                <ion-icon name='ios-thumbs-down' item-left></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-range [(ngModel)]="brightness">
+                    <ion-icon range-left small name="md-arrow-dropleft-circle"></ion-icon>
+                    <ion-icon range-right name="md-arrow-dropright-circle"></ion-icon>
+                </ion-range>
+            </ion-item>
+
+
+
+        </ion-list>
+
+        <ion-list *ngSwitchCase="'proxy'">
+            <ion-item>
+                <ion-toggle [(ngModel)]="status"></ion-toggle>
+                <ion-label>
+                    Enabled Proxy
+                </ion-label>
+                <ion-icon name='ios-git-branch' item-left></ion-icon>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Proxy IP</ion-label>
+                <ion-input type="text" value="180.242.188.34" [disabled]="!status"></ion-input>
+            </ion-item>
+
+            <ion-item>
+                <ion-label floating>Port</ion-label>
+                <ion-input type="text" value="3128" [disabled]="!status"></ion-input>
+            </ion-item>
+            <ion-item>
+                <button ion-button full large color="default" [disabled]="!status">Connect</button>
+
+            </ion-item>
+        </ion-list>
+    </div>
+</ion-content>
