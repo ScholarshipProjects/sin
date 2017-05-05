@@ -6,7 +6,7 @@ import { NavController } from 'ionic-angular';
     templateUrl: 'settings.html'
 })
 export class SettingsPage {
-    settings: string = "proxy";
+    settings: string = "connection";
     security: string = "1500";
     timeout: string = "30s";
     status: boolean = true;

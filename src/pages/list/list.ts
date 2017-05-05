@@ -7,23 +7,49 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class ListPage {
   selectedItem: any;
-  icons: string[];
-  items: Array<{title: string, note: string, icon: string}>;
+
+  //items: Array<{title: string, note: string, icon: string}>;
+  items: Array<any>;
+  servers: Array<string>;
+  status: Array<string>;
+  errors: Array<string>;
+  notificationStatus: Array<string>;
+  icons: Array<string>;
+  images: Array<string>;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-
-    // Let's populate this page with some filler content for funzies
-    this.icons = ['flask', 'wifi', 'beer', 'football', 'basketball', 'paper-plane',
-    'american-football', 'boat', 'bluetooth', 'build'];
-
+    this.servers = ['NS3211', 'BS1123', 'RS22NJ', 'QQRSB1', 'NEX391'];
+    this.status = ['Critical', 'Warning', 'Info', 'Down'];
+    this.errors = [
+      'CPU Usage 90%, fatal process amount',
+      'MySQL too many connecitions 93121 overload',
+      'Root certificate generation failed',
+      'SSH Monitoring and DNS Zone timeout',
+      'No monitoring data recieved',
+      'Too many inbound connections',
+      'Unauthorized login attempts',
+      'No response from Alpine server',
+      'Undentified is not a function',
+      'All of the servers are down'
+    ];
+    this.images = [
+      '/assets/icon/critical.png',
+      '/assets/icon/down.png',
+      '/assets/icon/info.png',
+      '/assets/icon/warning.png'
+    ];
     this.items = [];
-    for (let i = 1; i < 11; i++) {
+    for (let i = 0; i < 10; i++) {
       this.items.push({
-        title: 'Item ' + i,
-        note: 'This is item #' + i,
-        icon: this.icons[Math.floor(Math.random() * this.icons.length)]
+        img: this.images[Math.floor(Math.random() * (0 - 4)) + 4],
+        status: this.errors[i],
+        date: 'April 1, 2017',
+        isOpen: 'Open',
+        when: Date.now() + (i*700000),
+        server: this.servers[i]
+
       });
     }
   }

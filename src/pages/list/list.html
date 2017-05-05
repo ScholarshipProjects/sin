@@ -23,16 +23,42 @@
 </ion-content>-->
 <ion-content>
   <ion-list>
+    <ion-card *ngFor="let item of items">
 
-    <ion-item>
-      <ion-thumbnail item-left>
-        <img src="assets/img/thumbnail-totoro.png">
-      </ion-thumbnail>
-      <h2>My Neighbor Totoro</h2>
-      <p>Hayao Miyazaki • 1988</p>
-      <button ion-button clear item-right>View</button>
-    </ion-item>
+      <ion-item>
+        <ion-avatar item-left>
+          <img [src]="item.img">
+        </ion-avatar>
+        <h2>{{item.status}}</h2>
+        <p>{{item.date}}</p>
+      </ion-item>
 
-  
+
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left clear small color="secondary">
+          <ion-icon name="open"></ion-icon>
+          {{item.isOpen}}
+        </button>
+        </ion-col>
+
+        <ion-col text-center>
+          <button ion-button icon-left clear small color="danger">
+          <ion-note>
+          {{item.when | date: 'HH:mm:ss'}}
+          </ion-note>
+        </button>
+        </ion-col>
+
+        <ion-col center text-center>
+          <button ion-button icon-left clear small>
+            {{item.server}}
+          </button>
+        </ion-col>
+      </ion-row>
+
+    </ion-card>
+
   </ion-list>
+
 </ion-content>

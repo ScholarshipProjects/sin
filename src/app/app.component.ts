@@ -14,7 +14,7 @@ import { SettingsPage } from '../pages/settings/settings';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = SettingsPage;
+  rootPage: any = ListPage;
 
   pages: Array<{title: string, component: any}>;
 
